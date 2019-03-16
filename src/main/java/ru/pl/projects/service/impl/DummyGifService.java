@@ -34,6 +34,7 @@ public class DummyGifService implements GifService {
             log.error(e.getMessage());
         }
         //TODO здесь вызов photoLab
+
         return loadGif(text,category);
     }
 

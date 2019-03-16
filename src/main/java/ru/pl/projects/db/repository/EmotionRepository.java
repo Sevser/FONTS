@@ -8,4 +8,6 @@ import ru.pl.projects.model.entity.Emotion;
 public interface EmotionRepository extends JpaRepository<Emotion, Integer> {
 
     Emotion getOneByWeight(Integer weight);
+
+    Emotion findByName(String category);
 }

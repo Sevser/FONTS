@@ -31,7 +31,7 @@ INSERT INTO emotion_to_template (template_table_id, template_id, id) VALUES (15,
 
 --love
 INSERT INTO emotion_to_template (template_table_id, template_id, id) VALUES (16,7869955,9);
-INSERT INTO emotion_to_template (template_table_id, template_id, id) VALUES (17,3124589,9);
+INSERT INTO emotion_to_template (template_table_id, template_id, id) VALUES (17,2417112,9);
 INSERT INTO emotion_to_template (template_table_id, template_id, id) VALUES (18,5900719,9);
 
 --surprise

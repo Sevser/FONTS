@@ -45,7 +45,6 @@ public class PhotoLabClientImpl implements PhotoLabClient {
 
     @Override
     public List<Long> getTemplatesIdsByUrlId(String urlId) {
-        urlId = "7891514";
         MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
         body.add("combo_id", urlId);
         String result = photoLabRestTemplate.doPost("/photolab_steps.php",body);
