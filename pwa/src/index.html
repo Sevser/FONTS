@@ -6,10 +6,42 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Webpack starter</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
-  <div id="app"></div>
+  <div id="app">
+      <div class="page start-page">
+          <div class="start-page_content"></div>
+          <div class="start-page_toolbar">
+              <button class="circle-button button-start">
+                  <i class="material-icons">add</i>
+              </button>
+          </div>
+      </div>
+    <div class="page main-page">
+        <div class="main-page_area">
+            <div class="main-page_edit_area">
+                <img class="image" src="#">
+                <div class="text">Your text</div>
+            </div>
+        </div>
+        <div class="main-page_tools">
+            <div class="main-page_tools-tool">
+                <input style="display: none" id="file" type="file"></input>
+                    <label class="circle-button button-start" for="file">
+                        <i class="material-icons">camera</i>
+                    </label>
+            </div>
+            <div class="main-page_tools-tool">
+                <label class="circle-button button-start" for="file">
+                    <i class="material-icons">title</i>
+                </label>
+            </div>
+        </div>
+    </div>
+  </div>
 </body>
 
 </html>
