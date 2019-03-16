@@ -8,3 +8,4 @@ INSERT INTO emotions (id, name, weight) VALUES (7, 'relax', 2);
 INSERT INTO emotions (id, name, weight) VALUES (8, 'joy', 3);
 INSERT INTO emotions (id, name, weight) VALUES (9, 'love', 4);
 INSERT INTO emotions (id, name, weight) VALUES (10, 'surprise', 5);
+INSERT INTO emotions (id, name, weight) VALUES (11, 'default', 0);

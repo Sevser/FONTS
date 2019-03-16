@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import ru.pl.projects.service.MainService;
+
+import java.io.IOException;
 
 @Controller
 public class PWAController {
@@ -52,15 +55,16 @@ public class PWAController {
     }
 
     @PostMapping(value = "/rest/gif/from/image",
-            consumes = MediaType.IMAGE_JPEG_VALUE,
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
             produces = MediaType.IMAGE_GIF_VALUE)
     @ResponseBody
     public ResponseEntity<ByteArrayResource> getGifByText(@RequestParam(value = "text") String text,
-                                                          @RequestBody byte[] image) {
-        if (StringUtils.isEmpty(text)) {
+                                                          @RequestParam("file") MultipartFile multipartFile) throws IOException {
+
+        if (StringUtils.isEmpty(text) || multipartFile == null) {
             return ResponseEntity.badRequest().build();
         }
-        byte[] result = mainService.getGifByTextAndImage(text, image);
+        byte[] result = mainService.getGifByTextAndImage(text, multipartFile);
         if (result == null) {
             return ResponseEntity.notFound().build();
         }

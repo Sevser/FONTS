@@ -3,6 +3,7 @@ package ru.pl.projects.service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 @Slf4j
@@ -24,8 +25,8 @@ public class MainService {
         return gifService.loadGif(text, category);
     }
 
-    public byte[] getGifByTextAndImage(final String text, final byte[] images) {
+    public byte[] getGifByTextAndImage(final String text, final MultipartFile multipartFile) {
         String category = classificationService.getCategoryByText(text);
-        return gifService.loadGif(text, category);
+        return gifService.loadGif(text, category, multipartFile);
     }
 }
