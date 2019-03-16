@@ -1,5 +1,6 @@
 package ru.pl.projects.controller;
 
+import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
@@ -15,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import ru.pl.projects.service.MainService;
 
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class PWAController {
@@ -73,6 +75,23 @@ public class PWAController {
                 .contentType(MediaType.IMAGE_GIF)
                 .contentLength(result.length)
                 .body(new ByteArrayResource(result));
+    }
+
+    @PostMapping(value = "/rest/images",
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @ResponseBody
+    public ResponseEntity<List<String>> getImageUrls(@RequestParam(value = "text") String text,
+                                                     @RequestParam("file") MultipartFile multipartFile) throws IOException {
+
+        if (StringUtils.isEmpty(text) || multipartFile == null) {
+            return ResponseEntity.badRequest().build();
+        }
+        List<String> imageUrls = mainService.getImageUrls(text, multipartFile);
+        if (imageUrls.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(imageUrls);
     }
 
 }

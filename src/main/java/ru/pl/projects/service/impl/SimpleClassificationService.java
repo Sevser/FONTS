@@ -52,7 +52,13 @@ public class SimpleClassificationService implements ClassificationService {
     private String getCategoryByWord(String word) {
         Word result = repository.findByText(word);
         if (result == null) return null;
-        Integer value = result.getValence().intValue();
+        Double avgValence = result.getValence();
+        if (avgValence > 0) {
+            avgValence += 0.5;
+        } else if (avgValence < 0) {
+            avgValence -= 0.5;
+        }
+        Integer value = avgValence.intValue();
         return emotionMap.get(value).getName();
     }
 

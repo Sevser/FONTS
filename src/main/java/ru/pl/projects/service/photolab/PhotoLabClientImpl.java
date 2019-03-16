@@ -48,9 +48,7 @@ public class PhotoLabClientImpl implements PhotoLabClient {
         MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
         body.add("combo_id", urlId);
         String result = photoLabRestTemplate.doPost("/photolab_steps.php",body);
-        result = result.substring(1);
-        result = result.substring(0, result.length() - 1);
-        String[] strArr = result.split(",");
+        String[] strArr = result.substring(1,result.length()-1).split(",");
         List<String> strIds = Arrays.asList(strArr);
         List<Long> ids = new ArrayList<>();
         strIds.forEach(i -> ids.add(Long.parseLong(i)));
