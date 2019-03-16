@@ -24,12 +24,15 @@
         <div class="main-page_area">
             <div class="main-page_edit_area">
                 <img class="image" src="#">
-                <div class="text">Your text <div class="text-resize"></div></div>
+                <div class="text">
+                    <span class="span-text">Your text</span>
+                    <div class="text-resize"><i class="material-icons text-rotate">rotate_right</i></div>
+                </div>
             </div>
         </div>
         <div class="main-page_tools">
             <div class="main-page_tools_text_input">
-                <input type="text" class="text-input">
+                <input type="text" value="Your text" class="text-input">
             </div>
             <div class="main-page_tools-group">
                 <div class="main-page_tools-tool">
@@ -39,12 +42,27 @@
                     </label>
                 </div>
                 <div class="main-page_tools-tool">
-                    <label class="circle-button button-start" for="file">
-                        <i class="material-icons">title</i>
-                    </label>
+                    <button class="circle-button button-start button-color-font" for="file">
+                        <i class="material-icons">format_color_text</i>    
+                    </button>
+                </div>
+                <div class="main-page_tools-tool">
+                    <button class="circle-button button-start button-color-background" for="file">
+                        <i class="material-icons">color_lens</i>
+                    </button>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="color-page hide">
+        <div class="color-page-text">
+            <span>Choose color</span>
+        </div>
+        <div class="color-page-select"></div>
+        <div id="color-picker-container"></div>
+        <button class="circle-button button-color-ok" for="file">
+             <i class="material-icons">done</i>
+        </button>
     </div>
   </div>
 </body>

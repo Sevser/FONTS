@@ -41,6 +41,7 @@ html, body {
     font-family: 'Roboto', sans-serif;
 }
 #app {
+    position: relative;
     width: 100%;
     height: 100%;
     background-color: $background;
@@ -73,9 +74,6 @@ html, body {
 .main-page {
     flex-direction: column;
     background-color: blanchedalmond;
-}
-.hide {
-    display: none;
 }
 .main-page_area {
     width: calc(100vw - 24px);
@@ -117,6 +115,7 @@ html, body {
     color: #4a148c;
     user-select: none;
     transform-origin: 0 0 0;
+    transform-origin: center;
 }
 .main-page_tools_text_input {
     width: 100%;
@@ -154,5 +153,48 @@ html, body {
     bottom: -8px;
 }
 .text-resize-active {
+    display: flex;
+}
+.text-resize-active > .text-rotate {
+    display: none;
+}
+.text-rotate-active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.text-rotate-active > .text-rotate {
     display: inline-block;
+    font-size: 16px;
+}
+.color-page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: gold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.button-color-ok {
+    margin: 24px 0;
+    background-color: #000;
+    color: #fff;
+    box-shadow: 0 1px 12px 1px rgba(255,255,255,1);
+}
+.color-page-text {
+    font-family:  'Pacifico', cursive;
+    font-size: 38px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.color-page-text span {
+    width: 100%;
+}
+.hide {
+    display: none;
 }
