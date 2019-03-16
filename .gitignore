@@ -1,3 +1,7 @@
+*.class
+application.properties
+!example-application.properties
+
 .idea/
 *.iml
 /target

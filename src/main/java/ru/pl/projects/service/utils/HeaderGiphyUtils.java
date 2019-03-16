@@ -6,28 +6,26 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 
 @Service
-public class HeaderUtilsImpl implements HeaderUtils {
+public class HeaderGiphyUtils implements HeaderUtils {
 
-    @Value("${photolab.api.baseurl}")
-    private String PHOTOLAB_API_BASE_URL;
-    @Value("${photolab.api.uploadurl}")
-    private String PHOTOLAB_API_UPLOAD_URL;
+    @Value("${giphy.api.baseurl}")
+    private String GIPHY_API_BASEURL;
 
     @Override
     public String getBaseUrl() {
-        return PHOTOLAB_API_BASE_URL;
+        return GIPHY_API_BASEURL;
     }
 
     @Override
     public String getUploadUrl() {
-        return PHOTOLAB_API_UPLOAD_URL;
+        return GIPHY_API_BASEURL;
     }
+
 
     @Override
     public HttpHeaders getHttpHeader() {
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+        headers.setContentType(MediaType.APPLICATION_JSON);
         return headers;
     }
-
 }

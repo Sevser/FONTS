@@ -6,8 +6,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import ru.pl.projects.service.utils.HeaderPhotoLabUtilsImpl;
 import ru.pl.projects.service.utils.HeaderUtils;
-import ru.pl.projects.service.utils.HeaderUtilsImpl;
 
 @Service
 public class PhotoLabRestTemplate implements CustomRestTemplate {
@@ -15,7 +15,7 @@ public class PhotoLabRestTemplate implements CustomRestTemplate {
     private HeaderUtils headerUtils;
 
     @Autowired
-    public PhotoLabRestTemplate(HeaderUtils headerUtils) {
+    public PhotoLabRestTemplate(HeaderPhotoLabUtilsImpl headerUtils) {
         this.headerUtils = headerUtils;
         restTemplate = new RestTemplate();
     }
