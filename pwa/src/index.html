@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Webpack starter</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto:300,400" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
@@ -24,20 +24,25 @@
         <div class="main-page_area">
             <div class="main-page_edit_area">
                 <img class="image" src="#">
-                <div class="text">Your text</div>
+                <div class="text">Your text <div class="text-resize"></div></div>
             </div>
         </div>
         <div class="main-page_tools">
-            <div class="main-page_tools-tool">
-                <input style="display: none" id="file" type="file"></input>
+            <div class="main-page_tools_text_input">
+                <input type="text" class="text-input">
+            </div>
+            <div class="main-page_tools-group">
+                <div class="main-page_tools-tool">
+                    <input style="display: none" id="file" type="file"></input>
                     <label class="circle-button button-start" for="file">
                         <i class="material-icons">camera</i>
                     </label>
-            </div>
-            <div class="main-page_tools-tool">
-                <label class="circle-button button-start" for="file">
-                    <i class="material-icons">title</i>
-                </label>
+                </div>
+                <div class="main-page_tools-tool">
+                    <label class="circle-button button-start" for="file">
+                        <i class="material-icons">title</i>
+                    </label>
+                </div>
             </div>
         </div>
     </div>
