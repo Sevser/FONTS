@@ -32,6 +32,7 @@ const state = {
         font: '',
         background: '',
     },
+    image: null,
 };
 
 new generator(state);
@@ -62,9 +63,9 @@ function moveTextToCenter() {
     const cy = (posA.top + posA.bottom) / 2;
     const dx = (pos.right + pos.left) / 2;
     const dy = (pos.top + pos.bottom) / 2;
-    const x = cx - dx;
-    const y = cy- dy;
-    textElement.style.transform = `translate(${x}px,${y}px) scale(${state.text.scale})  rotate(${state.text.angle}deg)`;
+    state.text.translate.x = cx - dx;
+    state.text.translate.y = cy - dy;
+    textElement.style.transform = `translate(${state.text.translate.x}px,${state.text.translate.y}px) scale(${state.text.scale})  rotate(${state.text.angle}deg)`;
 }
 
 const hide = function hide(el) {
@@ -88,14 +89,12 @@ const reader = new FileReader();
 function fileInputSelector() {
     reader.onload = () => {
         cropImage.getCropImage(reader.result).then((res) => {
-            //const i = res.querySelector('img');
-            console.log(res);
             imageElement.src = res;
+            state.image = res;
         });
         imageElement.src = reader.result;
         show(imageElement);
     };
-    console.log(this.files);
     reader.readAsDataURL(this.files[this.files.length - 1]);
 }
 function textInputSelector(e) {
@@ -220,8 +219,13 @@ function getBackgroundColor() {
     });
 }
 
+function inputOnFocus() {
+
+}
+
 inputFile.addEventListener('change', fileInputSelector);
 inputText.addEventListener('input', textInputSelector);
+inputText.addEventListener('focus', inputOnFocus);
 buttonFontColor.addEventListener('click', getFontColor);
 buttonBackgroundColor.addEventListener('click', getBackgroundColor);
 imageArea.addEventListener('touchend', completeDragText);

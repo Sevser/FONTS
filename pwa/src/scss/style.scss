@@ -73,13 +73,14 @@ html, body {
 }
 .main-page {
     flex-direction: column;
-    background-color: blanchedalmond;
+    background-color: $background;
 }
 .main-page_area {
     width: calc(100vw - 24px);
     height: calc(100vw - 24px);
     position: relative;
     background-color: azure;
+    flex-shrink: 5;
 }
 .main-page_edit_area {
     width: 100%;
@@ -132,7 +133,8 @@ html, body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    flex-grow: 1
+    flex-grow: 1;
+    flex-shrink: 0;
 }
 .text-input {
     display: inline-block;
