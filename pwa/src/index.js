@@ -1,6 +1,8 @@
 import './scss/style.css';
 import './scss/style.scss';
+
 import ColorPalette from './ColorPalette';
+import CropImage from './CropImage';
 
 const state = {
     page: ['start', 'new-clip'],
@@ -44,6 +46,7 @@ const buttonFontColor = document.querySelector('.button-color-font');
 const buttonBackgroundColor = document.querySelector('.button-color-background');
 
 const colorPalette = new ColorPalette();
+const cropImage = new CropImage();
 
 const mousePos = { x: 0, y: 0 };
 const textPos = { x: 0, y: 0 };
@@ -68,10 +71,16 @@ buttonStart.addEventListener('click', () => {
 const reader = new FileReader();
 function fileInputSelector() {
     reader.onload = () => {
+        cropImage.getCropImage(reader.result).then((res) => {
+            //const i = res.querySelector('img');
+            console.log(res);
+            imageElement.src = res;
+        });
         imageElement.src = reader.result;
         show(imageElement);
     };
-    reader.readAsDataURL(this.files[0]);
+    console.log(this.files);
+    reader.readAsDataURL(this.files[this.files.length - 1]);
 }
 function textInputSelector(e) {
     let text = e.target.value;
