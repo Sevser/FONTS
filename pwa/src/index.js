@@ -9,6 +9,7 @@ const state = {
     textMouseDown: false,
     textEditMode: 'move',
     text: {
+        value: 'Your text',
         size: {
             w: 0,
             h: 0,
@@ -53,6 +54,19 @@ const textPos = { x: 0, y: 0 };
 const textSize = { w: 0, h: 0 };
 let touchTimeStamp = 0;
 
+function initTextElement() {
+    const pos = textElement.getBoundingClientRect();
+    const posA = imageArea.getBoundingClientRect();
+    state.text.size.w = pos.width;
+    state.text.size.h = pos.height;
+    state.text.pos.x = pos.left;
+    state.text.size.y = pos.top;
+    state.text.translate.x = (posA.right + posA.left) / 2;
+    state.text.translate.y = (posA.top + posA.bottom) / 2;
+    console.log(state.text.translate);
+}
+
+document.addEventListener('DOMContentLoaded', initTextElement);
 
 const hide = function hide(el) {
     el.classList.add('hide');
@@ -87,9 +101,10 @@ function textInputSelector(e) {
     pinTextResize.classList.remove('text-rotate-active');
     pinTextResize.classList.remove('text-resize-active');
     state.textEditMode = 'move';
-    const regexp = /[A-Za-z]+$/;
+    const regexp = /[A-Za-z ]+$/;
     if (text.match(regexp) || text === '') {
         const span = document.querySelector('.span-text');
+        state.text.value = text;
         span.innerHTML = text;
     } else {
         text = text.split('');
