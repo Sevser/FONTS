@@ -52,23 +52,20 @@ const colorPalette = new ColorPalette();
 const cropImage = new CropImage();
 
 const mousePos = { x: 0, y: 0 };
-const textPos = { x: 0, y: 0 };
 const textSize = { w: 0, h: 0 };
 let touchTimeStamp = 0;
 
-function initTextElement() {
+function moveTextToCenter() {
     const pos = textElement.getBoundingClientRect();
     const posA = imageArea.getBoundingClientRect();
-    state.text.size.w = pos.width;
-    state.text.size.h = pos.height;
-    state.text.pos.x = pos.left;
-    state.text.size.y = pos.top;
-    state.text.translate.x = (posA.right + posA.left) / 2;
-    state.text.translate.y = (posA.top + posA.bottom) / 2;
-    console.log(state.text.translate);
+    const cx = (posA.right + posA.left) / 2;
+    const cy = (posA.top + posA.bottom) / 2;
+    const dx = (pos.right + pos.left) / 2;
+    const dy = (pos.top + pos.bottom) / 2;
+    const x = cx - dx;
+    const y = cy- dy;
+    textElement.style.transform = `translate(${x}px,${y}px) scale(${state.text.scale})  rotate(${state.text.angle}deg)`;
 }
-
-document.addEventListener('DOMContentLoaded', initTextElement);
 
 const hide = function hide(el) {
     el.classList.add('hide');
@@ -82,6 +79,9 @@ hide(imageElement);
 buttonStart.addEventListener('click', () => {
     hide(pageStart);
     show(pageMain);
+    requestAnimationFrame(() => {
+        moveTextToCenter();
+    });
 });
 
 const reader = new FileReader();
