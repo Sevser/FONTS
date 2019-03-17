@@ -3,6 +3,7 @@ import './scss/style.scss';
 
 import ColorPalette from './ColorPalette';
 import CropImage from './CropImage';
+import generator from './generator';
 
 const state = {
     page: ['start', 'new-clip'],
@@ -32,6 +33,7 @@ const state = {
     },
 };
 
+new generator(state);
 
 const pageStart = document.querySelector('.start-page');
 const pageMain = document.querySelector('.main-page');
@@ -87,7 +89,7 @@ function textInputSelector(e) {
     pinTextResize.classList.remove('text-rotate-active');
     pinTextResize.classList.remove('text-resize-active');
     state.textEditMode = 'move';
-    const regexp = /[A-Za-z]+$/;
+    const regexp = /[A-Za-z ]+$/;
     if (text.match(regexp) || text === '') {
         const span = document.querySelector('.span-text');
         span.innerHTML = text;
