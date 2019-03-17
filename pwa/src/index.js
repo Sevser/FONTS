@@ -3,6 +3,7 @@ import './scss/style.scss';
 
 import ColorPalette from './ColorPalette';
 import CropImage from './CropImage';
+import generator from './generator';
 
 const state = {
     page: ['start', 'new-clip'],
@@ -33,6 +34,7 @@ const state = {
     },
 };
 
+new generator(state);
 
 const pageStart = document.querySelector('.start-page');
 const pageMain = document.querySelector('.main-page');
