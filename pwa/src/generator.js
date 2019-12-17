@@ -31,7 +31,7 @@ export default class handlerInput {
 
     createGifInstance() {
         this.gif = new GIF.GIF({
-            workers: 8,
+            workers: 12,
             quality: 0,
             repeat: 0,
             height: 400,
@@ -44,12 +44,12 @@ export default class handlerInput {
             d3.select('.image')
                 .attr('class', 'image')
                 .attr('src', URL.createObjectURL(blob));
-            // this.downloadFile.node().href = URL.createObjectURL(blob);
-            // this.downloadFile.node().dataset.downloadurl = blob;
-            // this.downloadFile.node().click()
-            // download(blob, this.input.node().value, "image/gif");
+            this.downloadFile.node().href = URL.createObjectURL(blob);
+            this.downloadFile.node().dataset.downloadurl = blob;
+            this.downloadFile.node().click()
+            download(blob, this.input.node().value, "image/gif");
 
-            // window.open(URL.createObjectURL(blob));
+            window.open(URL.createObjectURL(blob));
         }.bind(this));
         var q = queue(1);
 
@@ -87,7 +87,7 @@ export default class handlerInput {
         countLetters = string.length;
         const stringsArray = string.split(' ');
         let currentLine = 0;
-        let scale = 0.05;
+        let scale = 0.03;
         let idsCOUNT = 0;
         let currentOffsetLeft = 0;
         stringsArray.forEach(stringArray => {
@@ -177,6 +177,10 @@ export default class handlerInput {
                         speedDrawing: template.speedDrawing,
                     });
                     document.querySelector('#svgContainer').innerHTML += letterTemplate.innerHTML;
+                }
+                if (currentOffsetLeft > 140) {
+                    currentLine += 1;
+                    currentOffsetLeft = 0;
                 }
             });
             // currentLine += 1;
